@@ -26,7 +26,7 @@ input = fopen(inputFilename, "rb");
             count++;
         }
         fwrite(&currentChar, sizeof(char), 1, output);
-        fwrite(&count, sizeof(int), 1, output); // Write the count as an integer
+        fwrite(&count, sizeof(int), 1, output); 
         currentChar = ch;
     }
 
@@ -52,10 +52,10 @@ void decompressFile(const char *inputFilename, const char *outputFilename) {
         exit(EXIT_FAILURE);
     }
 
-    while (fread(&ch, sizeof(char), 1, input)) { // Read one character
-        if (fread(&count, sizeof(int), 1, input)) { // Read its run length
+    while (fread(&ch, sizeof(char), 1, input)) { 
+        if (fread(&count, sizeof(int), 1, input)) { 
             for (int i = 0; i < count; i++) {
-                fputc(ch, output); // Write the character 'count' times
+                fputc(ch, output); 
             }
         }
     }
